@@ -1,4 +1,54 @@
+from pynput import keyboard
+from pynput import mouse
 from tkinter import *
+import time
+import threading
+
+mouse_controller = mouse.Controller()
+
+clicking = False
+delay = 1
+listener = None
+
+def click_loop():
+    while clicking:
+        mouse_controller.click(mouse.Button.left)
+        time.sleep(delay)
+
+def on_press(key):
+    global clicking
+    try:
+        if key == keyboard.Key.insert:
+            clicking = not clicking
+            if clicking:
+                print("Clicking started")
+                threading.Thread(target=click_loop, daemon=True).start()
+            else:
+                print("Clicking stopped")
+    except AttributeError:
+        pass
+
+def start():
+    global delay, listener
+    value = secondsEntry.get().strip()
+    if value:
+        try:
+            delay = float(value)
+        except ValueError:
+            print(f"Invalid number. Using the default delay, {delay}")
+
+    if listener is None:
+        listener = keyboard.Listener(on_press=on_press)
+        listener.start()
+        print("Listener started")
+
+def stop():
+    global listener, clicking
+    clicking = False
+    if listener is not None:
+        listener.stop()
+        listener = None
+        print("Listener stopped")
 
 window = Tk()
 
@@ -16,14 +66,15 @@ secondsEntry = Entry(bg = "#726248", fg = "white")
 secondsEntry.pack
 secondsEntry.place(x = 120, y = 80)
 
-startButton = Button(window, text='Start', bg="#525252", fg="white", activebackground='#726248', activeforeground='white')
+startButton = Button(window, text='Start', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = start)
 startButton.pack()
 startButton.place(x=143, y =110)
 
-stopButton = Button(window, text='Stop', bg="#525252", fg="white", activebackground='#726248', activeforeground='white')
+stopButton = Button(window, text='Stop', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = stop)
 stopButton.pack()
 stopButton.place(x = 207, y =110)
 
 
 window.mainloop()
+
 
