@@ -4,6 +4,20 @@ from tkinter import *
 import time
 import threading
 import os
+import urllib.request
+
+ICON_URL = "https://raw.githubusercontent.com/cells-OSS/pyclicker/main/icon.png"
+ICON_DIR = os.path.join(os.path.expanduser("~"), ".pyclicker")
+ICON_PATH = os.path.join(ICON_DIR, "icon.png")
+
+def ensure_icon_exists():
+    if not os.path.exists(ICON_DIR):
+        os.makedirs(ICON_DIR)
+    if not os.path.exists(ICON_PATH):
+        try:
+            urllib.request.urlretrieve(ICON_URL, ICON_PATH)
+        except Exception as e:
+            print(f"Failed to download icon: {e}")
 
 mouse_controller = mouse.Controller()
 
@@ -55,7 +69,8 @@ window = Tk()
 
 window.title("Pyclicker")
 window.geometry("260x200")
-icon = PhotoImage(file='icon.png')
+ensure_icon_exists()
+icon = PhotoImage(file=ICON_PATH)
 window.iconphoto(True, icon)
 window.config(bg="#525252")
 
