@@ -3,6 +3,7 @@ from pynput import mouse
 from tkinter import *
 import time
 import threading
+import os
 
 mouse_controller = mouse.Controller()
 
@@ -53,7 +54,7 @@ def stop():
 window = Tk()
 
 window.title("Pyclicker")
-window.geometry("300x200")
+window.geometry("260x200")
 icon = PhotoImage(file='icon.png')
 window.iconphoto(True, icon)
 window.config(bg="#525252")
@@ -63,17 +64,22 @@ labelSlogan.pack()
 labelSlogan.place(x = 30, y = 30)
 
 secondsEntry = Entry(bg = "#726248", fg = "white")
-secondsEntry.pack
+secondsEntry.pack()
 secondsEntry.place(x = 70, y = 80)
 
 startButton = Button(window, text='Start', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = start)
 startButton.pack()
-startButton.place(x=93, y =110)
+if os.name == 'nt':
+    startButton.place(x = 83, y = 110)
+else:
+    startButton.place(x = 93, y = 110)
 
 stopButton = Button(window, text='Stop', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = stop)
 stopButton.pack()
-stopButton.place(x = 157, y =110)
-
+if os.name == 'nt':
+    stopButton.place(x = 147, y = 110)
+else:
+    stopButton.place(x = 157, y = 110)
 
 window.mainloop()
 
