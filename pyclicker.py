@@ -5,6 +5,8 @@ import time
 import threading
 import os
 import urllib.request
+import subprocess
+import sys
 
 ICON_URL = "https://raw.githubusercontent.com/cells-OSS/pyclicker/main/icon.png"
 if os.name == 'nt':
@@ -21,6 +23,20 @@ def ensure_icon_exists():
             urllib.request.urlretrieve(ICON_URL, icon_path)
         except Exception as e:
             print(f"Failed to download icon: {e}")
+
+
+def install_packages(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+required_packages = ["pynput"]
+for package in required_packages:
+    try:
+        __import__(package)
+    except ImportError:
+        print(f"Installing required package(s) {package}...")
+        install_packages(package)
+
+os.system('cls' if os.name == 'nt' else 'clear')
 
 mouse_controller = mouse.Controller()
 
