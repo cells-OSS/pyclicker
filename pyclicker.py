@@ -141,11 +141,11 @@ stopButton = Button(window, text='Stop', bg="#525252", fg="white", activebackgro
 stopButton.pack()
 stopButton.place(x = 157, y = 110)
 
-leftButton = Button(window, text='LMB', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = lambda: mode(1))
+leftButton = Button(window, text='LMB', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = LMB)
 leftButton.pack()
 leftButton.place(x = 93, y = 150)
 
-rightButton = Button(window, text='RMB', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = lambda: mode(2))
+rightButton = Button(window, text='RMB', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = RMB)
 rightButton.pack()
 rightButton.place(x = 157, y = 150)
 
