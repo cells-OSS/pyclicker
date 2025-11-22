@@ -44,19 +44,37 @@ clicking = False
 delay = 1
 listener = None
 
-def click_loop():
+def click_left():
     while clicking:
         mouse_controller.click(mouse.Button.left)
         time.sleep(delay)
 
-def on_press(key):
+def click_right():
+    while clicking:
+        mouse_controller.click(mouse.Button.right)
+        time.sleep(delay)
+
+def on_press_left(key):
     global clicking
     try:
         if key == keyboard.Key.insert:
             clicking = not clicking
             if clicking:
                 print("Clicking started")
-                threading.Thread(target=click_loop, daemon=True).start()
+                threading.Thread(target=click_left, daemon=True).start()
+            else:
+                print("Clicking stopped")
+    except AttributeError:
+        pass
+
+def on_press_right(key):
+    global clicking
+    try:
+        if key == keyboard.Key.insert:
+            clicking = not clicking
+            if clicking:
+                print("Clicking started")
+                threading.Thread(target=click_right, daemon=True).start()
             else:
                 print("Clicking stopped")
     except AttributeError:
@@ -84,6 +102,13 @@ def stop():
         listener = None
         print("Listener stopped")
 
+mode = None
+
+if mode == 1:
+    on_press = on_press_left
+
+if mode == 2:
+    on_press = on_press_right
 window = Tk()
 
 window.title("Pyclicker")
