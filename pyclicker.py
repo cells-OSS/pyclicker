@@ -90,6 +90,10 @@ def start():
             print(f"Invalid number. Using the default delay, {delay}")
 
     if listener is None:
+        if mode == 1:
+            on_press = on_press_left
+        if mode == 2:
+            on_press = on_press_right
         listener = keyboard.Listener(on_press=on_press)
         listener.start()
         print("Listener started")
@@ -102,13 +106,16 @@ def stop():
         listener = None
         print("Listener stopped")
 
+def LMB():
+    global mode
+    mode = 1
+
+def RMB():
+    global mode
+    mode = 2
+
 mode = None
 
-if mode == 1:
-    on_press = on_press_left
-
-if mode == 2:
-    on_press = on_press_right
 window = Tk()
 
 window.title("Pyclicker")
