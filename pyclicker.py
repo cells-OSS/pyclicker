@@ -112,7 +112,7 @@ if mode == 2:
 window = Tk()
 
 window.title("Pyclicker")
-window.geometry("260x200")
+window.geometry("300x200")
 ensure_icon_exists()
 icon = PhotoImage(file=icon_path)
 window.iconphoto(True, icon)
@@ -133,6 +133,10 @@ startButton.place(x = 93, y = 110)
 stopButton = Button(window, text='Stop', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = stop)
 stopButton.pack()
 stopButton.place(x = 157, y = 110)
+
+leftButton = Button(window, text='LMB', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = lambda: mode(1))
+leftButton.pack()
+leftButton.place(x = 93, y = 150)
 
 window.mainloop()
 
