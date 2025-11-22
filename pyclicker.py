@@ -138,6 +138,10 @@ leftButton = Button(window, text='LMB', bg="#525252", fg="white", activebackgrou
 leftButton.pack()
 leftButton.place(x = 93, y = 150)
 
+rightButton = Button(window, text='RMB', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = lambda: mode(2))
+rightButton.pack()
+rightButton.place(x = 157, y = 150)
+
 window.mainloop()
 
 
