@@ -103,17 +103,11 @@ secondsEntry.place(x = 70, y = 80)
 
 startButton = Button(window, text='Start', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = start)
 startButton.pack()
-if os.name == 'nt':
-    startButton.place(x = 83, y = 110)
-else:
-    startButton.place(x = 93, y = 110)
+startButton.place(x = 93, y = 110)
 
 stopButton = Button(window, text='Stop', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = stop)
 stopButton.pack()
-if os.name == 'nt':
-    stopButton.place(x = 147, y = 110)
-else:
-    stopButton.place(x = 157, y = 110)
+stopButton.place(x = 157, y = 110)
 
 window.mainloop()
 
