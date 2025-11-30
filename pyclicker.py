@@ -1,5 +1,3 @@
-from pynput import keyboard
-from pynput import mouse
 from tkinter import *
 import time
 import threading
@@ -35,6 +33,9 @@ for package in required_packages:
     except ImportError:
         print(f"Installing required package(s) {package}...")
         install_packages(package)
+
+from pynput import keyboard
+from pynput import mouse
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
