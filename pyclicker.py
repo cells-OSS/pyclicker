@@ -24,7 +24,10 @@ def ensure_icon_exists():
 
 
 def install_packages(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    if os.name == 'nt':
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    else:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--break-system-packages"])
 
 required_packages = ["pynput"]
 for package in required_packages:
