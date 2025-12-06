@@ -61,13 +61,6 @@ class MainWindow(QMainWindow):
         self.lineEdit.setText("1")
 
 
-    def when_start_clicked(self):
-        delay = self.lineEdit.text()
-        print(delay)
-
-    def when_stop_clicked(self):
-        print("stopped")
-
 
 app = QApplication([])
 window = MainWindow()
