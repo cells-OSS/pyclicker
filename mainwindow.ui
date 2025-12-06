@@ -63,7 +63,7 @@
      <string>Delay (seconds)</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="LMB">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -76,7 +76,7 @@
      <string>Left Click</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="RMB">
     <property name="geometry">
      <rect>
       <x>170</x>
