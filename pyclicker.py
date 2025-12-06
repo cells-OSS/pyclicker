@@ -55,19 +55,15 @@ class MainWindow(QMainWindow):
 
         uic.loadUi("mainwindow.ui", self)
 
-        #Connect the widgets.
-        self.start.clicked.connect(self.start)
-        self.stop.clicked.connect(self.stop)
-        self.LMB.clicked.connect(self.LMB)
-        self.RMB.clicked.connect(self.RMB)
+        # Connect the widgets.
+        self.start.clicked.connect(lambda: start(self))
+        self.stop.clicked.connect(lambda: stop())
+        self.LMB.clicked.connect(lambda: LMB())
+        self.RMB.clicked.connect(lambda: RMB())
         self.lineEdit.setText("1")
 
 
 
-app = QApplication([])
-window = MainWindow()
-window.show()
-app.exec()
 
 def click_left():
     while clicking:
@@ -105,9 +101,9 @@ def on_press_right(key):
     except AttributeError:
         pass
 
-def start():
+def start(self):
     global delay, listener
-    value = secondsEntry.get().strip()
+    value = self.lineEdit.text()
     if value:
         try:
             delay = float(value)
@@ -140,6 +136,13 @@ def RMB():
     mode = 2
 
 mode = None
+
+
+
+app = QApplication([])
+window = MainWindow()
+window.show()
+app.exec()
 
 
 
