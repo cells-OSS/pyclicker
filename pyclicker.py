@@ -49,6 +49,30 @@ clicking = False
 delay = 1
 listener = None
 
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        uic.loadUi("mainwindow.ui", self)
+
+        self.start.clicked.connect(self.when_start_clicked)
+        self.stop.clicked.connect(self.when_stop_clicked)
+        self.lineEdit.setText("1")
+
+
+    def when_start_clicked(self):
+        delay = self.lineEdit.text()
+        print(delay)
+
+    def when_stop_clicked(self):
+        print("stopped")
+
+
+app = QApplication([])
+window = MainWindow()
+window.show()
+app.exec()
+
 def click_left():
     while clicking:
         mouse_controller.click(mouse.Button.left)
