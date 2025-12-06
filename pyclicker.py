@@ -57,7 +57,7 @@ class MainWindow(QMainWindow):
 
         #Connect the widgets.
         self.start.clicked.connect(self.start)
-        self.stop.clicked.connect(self.when_stop_clicked)
+        self.stop.clicked.connect(self.stop)
         self.lineEdit.setText("1")
 
 
