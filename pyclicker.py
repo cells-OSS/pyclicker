@@ -1,3 +1,5 @@
+from pynput import mouse
+from pynput import keyboard
 from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication, QMainWindow
 import time
@@ -14,6 +16,7 @@ else:
     icon_dir = os.path.join(os.path.expanduser("~/.config/pyclicker"))
 icon_path = os.path.join(icon_dir, "icon.png")
 
+
 def ensure_icon_exists():
     if not os.path.exists(icon_dir):
         os.makedirs(icon_dir)
@@ -26,9 +29,12 @@ def ensure_icon_exists():
 
 def install_packages(package):
     if os.name == 'nt':
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install", package])
     else:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--break-system-packages"])
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install", package, "--break-system-packages"])
+
 
 required_packages = ["pynput", "pyqt6"]
 for package in required_packages:
@@ -38,8 +44,6 @@ for package in required_packages:
         print(f"Installing required package(s) {package}...")
         install_packages(package)
 
-from pynput import keyboard
-from pynput import mouse
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -48,6 +52,7 @@ mouse_controller = mouse.Controller()
 clicking = False
 delay = 1
 listener = None
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -63,17 +68,17 @@ class MainWindow(QMainWindow):
         self.lineEdit.setText("1")
 
 
-
-
 def click_left():
     while clicking:
         mouse_controller.click(mouse.Button.left)
         time.sleep(delay)
 
+
 def click_right():
     while clicking:
         mouse_controller.click(mouse.Button.right)
         time.sleep(delay)
+
 
 def on_press_left(key):
     global clicking
@@ -88,6 +93,7 @@ def on_press_left(key):
     except AttributeError:
         pass
 
+
 def on_press_right(key):
     global clicking
     try:
@@ -100,6 +106,7 @@ def on_press_right(key):
                 print("Clicking stopped")
     except AttributeError:
         pass
+
 
 def start(self):
     global delay, listener
@@ -119,6 +126,7 @@ def start(self):
         listener.start()
         print("Listener started")
 
+
 def stop():
     global listener, clicking
     clicking = False
@@ -127,22 +135,21 @@ def stop():
         listener = None
         print("Listener stopped")
 
+
 def LMB():
     global mode
     mode = 1
+
 
 def RMB():
     global mode
     mode = 2
 
-mode = None
 
+mode = None
 
 
 app = QApplication([])
 window = MainWindow()
 window.show()
 app.exec()
-
-
-
