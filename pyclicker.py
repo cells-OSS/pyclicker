@@ -56,7 +56,7 @@ class MainWindow(QMainWindow):
         uic.loadUi("mainwindow.ui", self)
 
         #Connect the widgets.
-        self.start.clicked.connect(self.when_start_clicked)
+        self.start.clicked.connect(self.start)
         self.stop.clicked.connect(self.when_stop_clicked)
         self.lineEdit.setText("1")
 
