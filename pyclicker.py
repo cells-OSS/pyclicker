@@ -30,7 +30,7 @@ def install_packages(package):
     else:
         subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--break-system-packages"])
 
-required_packages = ["pynput"]
+required_packages = ["pynput", "pyqt6"]
 for package in required_packages:
     try:
         __import__(package)
