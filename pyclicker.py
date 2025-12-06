@@ -121,41 +121,5 @@ def RMB():
 
 mode = None
 
-window = Tk()
-
-window.title("Pyclicker")
-window.geometry("300x200")
-ensure_icon_exists()
-icon = PhotoImage(file=icon_path)
-window.iconphoto(True, icon)
-window.config(bg="#525252")
-
-labelSlogan = Label(window,text="The only clicker software you'll need.", background="#525252", fg="white")
-labelSlogan.pack()
-labelSlogan.place(x = 30, y = 30)
-
-secondsEntry = Entry(bg = "#726248", fg = "white")
-secondsEntry.pack()
-secondsEntry.place(x = 70, y = 80)
-
-leftButton = Button(window, text='LMB', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = LMB)
-leftButton.pack()
-leftButton.place(x = 93, y = 110)
-
-rightButton = Button(window, text='RMB', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = RMB)
-rightButton.pack()
-rightButton.place(x = 157, y = 110)
-
-startButton = Button(window, text='Start', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = start)
-startButton.pack()
-startButton.place(x = 93, y = 150)
-
-stopButton = Button(window, text='Stop', bg="#525252", fg="white", activebackground='#726248', activeforeground='white', command = stop)
-stopButton.pack()
-stopButton.place(x = 157, y = 150)
-
-
-
-window.mainloop()
 
 
