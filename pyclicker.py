@@ -2,6 +2,7 @@ from pynput import mouse
 from pynput import keyboard
 from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtGui import QIcon
 import time
 import threading
 import os
@@ -44,6 +45,7 @@ for package in required_packages:
         print(f"Installing required package(s) {package}...")
         install_packages(package)
 
+ensure_icon_exists()
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -59,6 +61,7 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         uic.loadUi("mainwindow.ui", self)
+        self.setWindowIcon(QIcon(icon_path))
 
         # Connect the widgets.
         self.start.clicked.connect(lambda: start(self))
