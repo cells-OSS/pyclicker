@@ -13,6 +13,10 @@ Ensure you have [Python](https://www.python.org/) installed and simply run the s
 Simply run the python script using the python3 command.
 
 **For NixOS**
+
+**WARNING**
+NixOS is currently untested, this way of installing may not work. I will be testing this as soon as possible.
+
 Since NixOS uses a declarative approach, you will need to edit your configuration.nix file located at "/etc/nixos".
 Once you're in, add the following to entries into your package list:
 
