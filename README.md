@@ -22,3 +22,5 @@ packages = with pkgs; [
 ];
 
 Once done, save and quit the file and rebuild your system (sudo nixos-rebuild switch)
+
+You can now run the python file using the python3 command.
