@@ -1,8 +1,3 @@
-from pynput import mouse
-from pynput import keyboard
-from PyQt6 import uic
-from PyQt6.QtWidgets import QApplication, QMainWindow
-from PyQt6.QtGui import QIcon
 import time
 import threading
 import os
@@ -11,12 +6,26 @@ import subprocess
 import sys
 
 ICON_URL = "https://raw.githubusercontent.com/cells-OSS/pyclicker/main/icon.png"
+WINDOW_URL = "https://raw.githubusercontent.com/cells-OSS/pyclicker/main/mainwindow.ui"
 if os.name == 'nt':
     icon_dir = os.path.join(os.getenv('APPDATA'), "pyclicker")
+    icon_path = os.path.join(icon_dir, "icon.png")
+    window_dir = os.path.join(os.getenv('APPDATA'), "pyclicker")
+    window_path = os.path.join(icon_dir, "icon.png")
 else:
     icon_dir = os.path.join(os.path.expanduser("~/.config/pyclicker"))
-icon_path = os.path.join(icon_dir, "icon.png")
+    icon_path = os.path.join(icon_dir, "icon.png")
+    window_dir = os.path.join(os.path.expanduser("~/.config/pyclicker"))
+    window_path = os.path.join(icon_dir, "icon.png")
 
+def ensure_window_exists():
+    if not os.path.exists(window_dir):
+        os.makedirs(window_dir)
+    if not os.path.exists(window_path):
+        try:
+            urllib.request.urlretrieve(WINDOW_URL, window_path)
+        except Exception as e:
+            print(f"Failed to download main window: {e}")
 
 def ensure_icon_exists():
     if not os.path.exists(icon_dir):
@@ -44,6 +53,12 @@ for package in required_packages:
     except ImportError:
         print(f"Installing required package {package}...")
         install_packages(package)
+
+from pynput import mouse
+from pynput import keyboard
+from PyQt6 import uic
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtGui import QIcon
 
 ensure_icon_exists()
 
