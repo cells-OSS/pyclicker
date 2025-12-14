@@ -75,7 +75,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        uic.loadUi("mainwindow.ui", self)
+        uic.loadUi(os.path.expanduser("~/.config/pyclicker/mainwindow.ui"), self)
         self.setWindowIcon(QIcon(icon_path))
 
         # Connect the widgets.
