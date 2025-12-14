@@ -61,6 +61,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QIcon
 
 ensure_icon_exists()
+ensure_window_exists()
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -75,7 +76,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        uic.loadUi(os.path.expanduser("~/.config/pyclicker/mainwindow.ui"), self)
+        uic.loadUi(window_path, self)
         self.setWindowIcon(QIcon(icon_path))
 
         # Connect the widgets.
