@@ -11,7 +11,7 @@ if os.name == 'nt':
     icon_dir = os.path.join(os.getenv('APPDATA'), "pyclicker")
     icon_path = os.path.join(icon_dir, "icon.png")
     window_dir = os.path.join(os.getenv('APPDATA'), "pyclicker")
-    window_path = os.path.join(icon_dir, "icon.png")
+    window_path = os.path.join(window_dir, "mainwindow.ui")
 else:
     icon_dir = os.path.join(os.path.expanduser("~/.config/pyclicker"))
     icon_path = os.path.join(icon_dir, "icon.png")
