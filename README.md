@@ -3,7 +3,8 @@ A simple clicker app designed to be used for automation.
 
 # SCREENSHOTS
 
-![Pyclicker v1.6](https://github.com/cells-oss/pyclicker/blob/main/pyclicker-v1.6.png)
+<img width="364" height="273" alt="pyclicker-v1 6" src="https://github.com/user-attachments/assets/0f49baee-5e93-4d5c-94f8-e98c903e0b1a" />
+
 
 # PREREQUISITES
 [Python](https://www.python.org/)
