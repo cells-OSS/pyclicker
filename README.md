@@ -3,8 +3,7 @@ A simple clicker app designed to be used for automation.
 
 # SCREENSHOTS
 
-<img width="364" height="273" alt="pyclicker-v1 6" src="https://github.com/user-attachments/assets/0f49baee-5e93-4d5c-94f8-e98c903e0b1a" />
-
+<img width="339" height="272" alt="pyclicker-v1 6" src="https://github.com/user-attachments/assets/bcf6a757-21e6-4129-b78c-8126b18c9224" />
 
 # PREREQUISITES
 [Python](https://www.python.org/)
